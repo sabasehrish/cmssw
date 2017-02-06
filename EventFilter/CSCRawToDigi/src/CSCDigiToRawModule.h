@@ -7,7 +7,7 @@
  */
 
 #include <FWCore/Framework/interface/ConsumesCollector.h>
-#include <FWCore/Framework/interface/EDProducer.h>
+#include <FWCore/Framework/interface/stream/EDProducer.h>
 #include "FWCore/Utilities/interface/InputTag.h"
 #include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
@@ -26,7 +26,7 @@ namespace edm {
 
 class CSCDigiToRaw;
 
-class CSCDigiToRawModule : public edm::EDProducer {
+class CSCDigiToRawModule : public edm::stream::EDProducer<> {
  public:
   /// Constructor
   CSCDigiToRawModule(const edm::ParameterSet & pset);
