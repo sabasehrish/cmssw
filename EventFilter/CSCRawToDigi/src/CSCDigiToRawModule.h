@@ -7,7 +7,7 @@
  */
 
 #include <FWCore/Framework/interface/ConsumesCollector.h>
-#include <FWCore/Framework/interface/stream/EDProducer.h>
+#include <FWCore/Framework/interface/global/EDProducer.h>
 #include "FWCore/Utilities/interface/InputTag.h"
 #include "FWCore/ParameterSet/interface/ConfigurationDescriptions.h"
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
@@ -26,7 +26,7 @@ namespace edm {
 
 class CSCDigiToRaw;
 
-class CSCDigiToRawModule : public edm::stream::EDProducer<> {
+class CSCDigiToRawModule : public edm::global::EDProducer<> {
  public:
   /// Constructor
   CSCDigiToRawModule(const edm::ParameterSet & pset);
@@ -35,7 +35,7 @@ class CSCDigiToRawModule : public edm::stream::EDProducer<> {
   virtual ~CSCDigiToRawModule();
 
   // Operations
-  virtual void produce( edm::Event&, const edm::EventSetup& );
+  virtual void produce( edm::StreamID, edm::Event&, const edm::EventSetup& ) const override;
 
   // Fill parameters descriptions
   static void fillDescriptions(edm::ConfigurationDescriptions & descriptions);

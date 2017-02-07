@@ -90,7 +90,7 @@ void CSCDigiToRawModule::fillDescriptions(edm::ConfigurationDescriptions & descr
 }
 
 
-void CSCDigiToRawModule::produce( edm::Event & e, const edm::EventSetup& c ){
+void CSCDigiToRawModule::produce( edm::StreamID, edm::Event & e, const edm::EventSetup& c ) const{
   ///reverse mapping for packer
   edm::ESHandle<CSCChamberMap> hcham;
   c.get<CSCChamberMapRcd>().get(hcham); 
