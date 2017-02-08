@@ -19,6 +19,7 @@
 #include "DataFormats/CSCDigi/interface/CSCCLCTDigiCollection.h"
 #include "DataFormats/CSCDigi/interface/CSCCLCTPreTriggerCollection.h"
 #include "DataFormats/CSCDigi/interface/CSCCorrelatedLCTDigiCollection.h"
+#include "EventFilter/CSCRawToDigi/src/CSCDigiToRaw.h"
 
 namespace edm {
    class ConfigurationDescriptions;
@@ -46,8 +47,9 @@ class CSCDigiToRawModule : public edm::global::EDProducer<> {
   bool		usePreTriggers;   // Select if to use Pre-Triigers CLCT digis
   bool		packEverything_;   // bypass all cuts and (pre)trigger requirements
 
-  CSCDigiToRaw * packer;
-
+  //change to non-pointer? 
+  //CSCDigiToRaw * packer;
+  local_CSCDigiToRaw local_info;
   edm::EDGetTokenT<CSCWireDigiCollection>             wd_token;
   edm::EDGetTokenT<CSCStripDigiCollection>            sd_token;
   edm::EDGetTokenT<CSCComparatorDigiCollection>       cd_token;

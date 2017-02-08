@@ -14,8 +14,8 @@
 #include "FWCore/ParameterSet/interface/ParameterSetDescription.h"
 #include "CondFormats/DataRecord/interface/CSCChamberMapRcd.h"
 
-CSCDigiToRawModule::CSCDigiToRawModule(const edm::ParameterSet & pset): 
-  packer(new CSCDigiToRaw(pset))
+CSCDigiToRawModule::CSCDigiToRawModule(const edm::ParameterSet & pset) 
+  :local_info(pset, 2005, false, true)
 {
   //theStrip = pset.getUntrackedParameter<string>("DigiCreator", "cscunpacker");
   
@@ -38,7 +38,7 @@ CSCDigiToRawModule::CSCDigiToRawModule(const edm::ParameterSet & pset):
 
 
 CSCDigiToRawModule::~CSCDigiToRawModule(){
-  delete packer;
+ // delete packer;
 }
 
 void CSCDigiToRawModule::fillDescriptions(edm::ConfigurationDescriptions & descriptions) {
@@ -92,6 +92,10 @@ void CSCDigiToRawModule::fillDescriptions(edm::ConfigurationDescriptions & descr
 
 void CSCDigiToRawModule::produce( edm::StreamID, edm::Event & e, const edm::EventSetup& c ) const{
   ///reverse mapping for packer
+  //local_CSCDigiToRaw local_info;
+  //local_info.  
+ //create a local packer object here: 
+  CSCDigiToRaw *packer = new CSCDigiToRaw(local_info); 
   edm::ESHandle<CSCChamberMap> hcham;
   c.get<CSCChamberMapRcd>().get(hcham); 
   const CSCChamberMap* theMapping = hcham.product();
@@ -119,11 +123,12 @@ void CSCDigiToRawModule::produce( edm::StreamID, edm::Event & e, const edm::Even
   // Create the packed data
   packer->createFedBuffers(*stripDigis, *wireDigis, *comparatorDigis, 
                            *alctDigis, *clctDigis, *preTriggers, *correlatedLCTDigis,
-                           *(fed_buffers.get()), theMapping, e, theFormatVersion, usePreTriggers,
-			   packEverything_);
+                           *(fed_buffers.get()), theMapping, e); //, theFormatVersion, usePreTriggers,
+			  // packEverything_);
   
   // put the raw data to the event
   e.put(std::move(fed_buffers), "CSCRawData");
+  //delete packer;
 }
 
 

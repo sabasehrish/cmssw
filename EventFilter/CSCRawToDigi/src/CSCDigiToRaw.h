@@ -15,15 +15,47 @@
 #include "DataFormats/CSCDigi/interface/CSCCLCTPreTriggerCollection.h"
 #include "DataFormats/CSCDigi/interface/CSCCorrelatedLCTDigiCollection.h"
 #include "EventFilter/CSCRawToDigi/interface/CSCEventData.h"
+#include "FWCore/ParameterSet/interface/ParameterSet.h"
 
 class FEDRawDataCollection;
 class CSCReadoutMappingFromFile;
 class CSCChamberMap;
 
+struct local_CSCDigiToRaw {
+  int alctWindowMin_;
+  int alctWindowMax_;
+  int clctWindowMin_;
+  int clctWindowMax_;
+  int preTriggerWindowMin_;
+  int preTriggerWindowMax_;
+  uint16_t formatVersion_;
+  bool usePreTriggers_;
+  bool packEverything_;
+  uint16_t theFormatVersion; 
+  bool usePreTriggers;
+  bool packEverything;
+  local_CSCDigiToRaw (const edm::ParameterSet & pset, 
+                      uint16_t format_version, 
+                      bool use_pre_triggers, 
+                      bool packEverything) : 
+    alctWindowMin_(pset.getParameter<int>("alctWindowMin")),
+    alctWindowMax_(pset.getParameter<int>("alctWindowMax")),
+    clctWindowMin_(pset.getParameter<int>("clctWindowMin")),
+    clctWindowMax_(pset.getParameter<int>("clctWindowMax")),
+    preTriggerWindowMin_(pset.getParameter<int>("preTriggerWindowMin")),
+    preTriggerWindowMax_(pset.getParameter<int>("preTriggerWindowMax")),
+    formatVersion_(format_version),
+    usePreTriggers_(use_pre_triggers),
+    packEverything_(packEverything) {}
+};
+
 class CSCDigiToRaw {
 public:
   /// Constructor
-  explicit CSCDigiToRaw(const edm::ParameterSet & pset);
+  explicit CSCDigiToRaw(const local_CSCDigiToRaw info); //const edm::ParameterSet & pset, 
+                       // uint16_t theFormatVersion = 2005, 
+                      //  bool usePreTriggers = true,
+                      //  bool packEverything = false);
 
   /// Take a vector of digis and fill the FEDRawDataCollection
   void createFedBuffers(const CSCStripDigiCollection& stripDigis,
@@ -35,10 +67,10 @@ public:
                         const CSCCorrelatedLCTDigiCollection& correlatedLCTDigis,
 			FEDRawDataCollection& fed_buffers,
 		        const CSCChamberMap* theMapping, 
-			edm::Event & e, 
-			uint16_t theFormatVersion = 2005, 
-			bool usePreTriggers = true,
-			bool packEverything = false);
+			edm::Event & e); //, 
+			// uint16_t theFormatVersion = 2005, 
+			// bool usePreTriggers = true,
+			// bool packEverything = false);
 
 private:
   void beginEvent(const CSCChamberMap* electronicsMap);

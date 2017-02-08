@@ -119,18 +119,20 @@ bool accept(const CSCDetId & cscId, const CSCCLCTPreTriggerCollection & lcts,
 
 }
 
-
-CSCDigiToRaw::CSCDigiToRaw(const edm::ParameterSet & pset)
+CSCDigiToRaw::CSCDigiToRaw() : {}
+/*CSCDigiToRaw::CSCDigiToRaw(const edm::ParameterSet & pset, uint16_t format_version, bool use_pre_triggers,
+                                    bool packEverything)
   : alctWindowMin_(pset.getParameter<int>("alctWindowMin")),
     alctWindowMax_(pset.getParameter<int>("alctWindowMax")),
     clctWindowMin_(pset.getParameter<int>("clctWindowMin")),
     clctWindowMax_(pset.getParameter<int>("clctWindowMax")),
     preTriggerWindowMin_(pset.getParameter<int>("preTriggerWindowMin")),
     preTriggerWindowMax_(pset.getParameter<int>("preTriggerWindowMax")),
-    formatVersion_(2005),
-    usePreTriggers_(true),
-    packEverything_(false)
+    formatVersion_(format_version),
+    usePreTriggers_(use_pre_triggers),
+    packEverything_(packEverything)
 {}
+*/
 
 void CSCDigiToRaw::beginEvent(const CSCChamberMap* electronicsMap)
 {
@@ -391,13 +393,13 @@ void CSCDigiToRaw::createFedBuffers(const CSCStripDigiCollection& stripDigis,
                                     const CSCCorrelatedLCTDigiCollection& correlatedLCTDigis,
                                     FEDRawDataCollection& fed_buffers,
                                     const CSCChamberMap* mapping,
-                                    Event & e, uint16_t format_version, bool use_pre_triggers,
-				    bool packEverything)
+                                    Event & e) //, uint16_t format_version, bool use_pre_triggers,
+				   // bool packEverything)
 {
 
-  formatVersion_ = format_version;
-  usePreTriggers_ = use_pre_triggers;
-  packEverything_ = packEverything;
+  //formatVersion_ = format_version;
+  //usePreTriggers_ = use_pre_triggers;
+  //packEverything_ = packEverything;
   //bits of code from ORCA/Muon/METBFormatter - thanks, Rick:)!
 
   //get fed object from fed_buffers
