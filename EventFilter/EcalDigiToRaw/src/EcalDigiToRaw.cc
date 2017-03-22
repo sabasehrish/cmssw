@@ -291,7 +291,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
 // ------------ method called once each job just before starting event loop  ------------
 void 
-EcalDigiToRaw::beginJob()
+EcalDigiToRaw::beginStream(edm::StreamID)
 {
 	Headerblockformatter_ -> SetParam(this);
 	Towerblockformatter_  -> SetParam(this);
@@ -301,7 +301,7 @@ EcalDigiToRaw::beginJob()
 
 // ------------ method called once each job just after ending the event loop  ------------
 void 
-EcalDigiToRaw::endJob() {
+EcalDigiToRaw::endStream() {
 }
 
 
