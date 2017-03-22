@@ -11,29 +11,29 @@
 
 using namespace std;
 
-BlockFormatter::BlockFormatter() {
+BlockFormatter::BlockFormatter(EcalDigiToRaw* base) {
+  pcounter_ = (base -> GetCounter());
+  debug_   = base -> GetDebug();
+  porbit_number_ = (base -> GetOrbit());
+  plv1_ = (base -> GetLV1());
+  pbx_  = (base -> GetBX());
+  prunnumber_ = (base -> GetRunNumber());
+  doBarrel_ = base -> GetDoBarrel();
+  doEndCap_ = base -> GetDoEndCap();
+  plistDCCId_ = base -> GetListDCCId();
+  doTCC_ = base -> GetDoTCC();
+  doSR_ = base -> GetDoSR();
+  doTower_ = base -> GetDoTower();
+
 }
 
 BlockFormatter::~BlockFormatter() {
 }
 
 
-void BlockFormatter::SetParam(EcalDigiToRaw* base) {
+//void BlockFormatter::SetParam(EcalDigiToRaw* base) {
 
- pcounter_ = (base -> GetCounter());
- debug_   = base -> GetDebug();
- porbit_number_ = (base -> GetOrbit());
- plv1_ = (base -> GetLV1());
- pbx_  = (base -> GetBX());
- prunnumber_ = (base -> GetRunNumber());
- doBarrel_ = base -> GetDoBarrel();
- doEndCap_ = base -> GetDoEndCap();
- plistDCCId_ = base -> GetListDCCId();
- doTCC_ = base -> GetDoTCC();
- doSR_ = base -> GetDoSR();
- doTower_ = base -> GetDoTower();
-
-}
+//}
 
 
 void BlockFormatter::DigiToRaw(FEDRawDataCollection* productRawData) {

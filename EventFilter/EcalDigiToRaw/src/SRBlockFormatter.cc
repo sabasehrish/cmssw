@@ -6,9 +6,9 @@
 using namespace std;
 
 
-SRBlockFormatter::SRBlockFormatter() {
+//SRBlockFormatter::SRBlockFormatter() {
 
-}
+//}
 
 SRBlockFormatter::~SRBlockFormatter() {
 

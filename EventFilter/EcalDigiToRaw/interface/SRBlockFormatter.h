@@ -16,7 +16,7 @@
 class SRBlockFormatter : public BlockFormatter {
  public :
 
-	SRBlockFormatter();
+	SRBlockFormatter(EcalDigiToRaw* es): BlockFormatter(es) {};
 	~SRBlockFormatter();
         void DigiToRaw(int dccid, int dcc_channel, int flag, FEDRawData& rawdata);
 

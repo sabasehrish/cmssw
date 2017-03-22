@@ -12,9 +12,6 @@
 using namespace std;
 
 
-TowerBlockFormatter::TowerBlockFormatter() {
-
-}
 
 TowerBlockFormatter::~TowerBlockFormatter() {
 

@@ -12,10 +12,10 @@
 using namespace std;
 
 
-TCCBlockFormatter::TCCBlockFormatter() {
+/*TCCBlockFormatter::TCCBlockFormatter() {
 
  AllTPsamples_ = false;
-}
+} */
 
 TCCBlockFormatter::~TCCBlockFormatter() {
 

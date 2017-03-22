@@ -74,10 +74,15 @@ EcalDigiToRaw::EcalDigiToRaw(const edm::ParameterSet& iConfig)
    debug_ = iConfig.getUntrackedParameter<bool>("debug");
 
 
-   Towerblockformatter_ = new TowerBlockFormatter;
-   TCCblockformatter_   = new TCCBlockFormatter();
-   SRblockformatter_	= new SRBlockFormatter();
-   Headerblockformatter_= new BlockFormatter;
+   Towerblockformatter_ = new TowerBlockFormatter(this);
+   TCCblockformatter_   = new TCCBlockFormatter(this);
+   SRblockformatter_	= new SRBlockFormatter(this);
+   Headerblockformatter_= new BlockFormatter(this);
+
+   //Headerblockformatter_ -> SetParam(this);
+ //  Towerblockformatter_  -> SetParam(this);
+ //  TCCblockformatter_  -> SetParam(this);
+   //SRblockformatter_   -> SetParam(this);
 
    produces<FEDRawDataCollection>();
 
@@ -293,10 +298,6 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 void 
 EcalDigiToRaw::beginStream(edm::StreamID)
 {
-	Headerblockformatter_ -> SetParam(this);
-	Towerblockformatter_  -> SetParam(this);
-	TCCblockformatter_  -> SetParam(this);
-	SRblockformatter_   -> SetParam(this);
 }
 
 // ------------ method called once each job just after ending the event loop  ------------
