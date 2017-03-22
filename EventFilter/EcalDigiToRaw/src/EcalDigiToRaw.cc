@@ -74,15 +74,10 @@ EcalDigiToRaw::EcalDigiToRaw(const edm::ParameterSet& iConfig)
    debug_ = iConfig.getUntrackedParameter<bool>("debug");
 
 
-   Towerblockformatter_ = new TowerBlockFormatter(this);
-   TCCblockformatter_   = new TCCBlockFormatter(this);
-   SRblockformatter_	= new SRBlockFormatter(this);
-   Headerblockformatter_= new BlockFormatter(this);
-
-   //Headerblockformatter_ -> SetParam(this);
- //  Towerblockformatter_  -> SetParam(this);
- //  TCCblockformatter_  -> SetParam(this);
-   //SRblockformatter_   -> SetParam(this);
+   Towerblockformatter_ = std::unique_ptr<TowerBlockFormatter>(new TowerBlockFormatter(this));
+   TCCblockformatter_ = std::unique_ptr<TCCBlockFormatter>(new TCCBlockFormatter(this));
+   SRblockformatter_ = std::unique_ptr<SRBlockFormatter>(new SRBlockFormatter(this));
+   Headerblockformatter_ = std::unique_ptr<BlockFormatter>(new BlockFormatter(this));
 
    produces<FEDRawDataCollection>();
 
@@ -92,14 +87,6 @@ EcalDigiToRaw::EcalDigiToRaw(const edm::ParameterSet& iConfig)
 
 EcalDigiToRaw::~EcalDigiToRaw()
 {
- 
-   // do anything here that needs to be done at desctruction time
-   // (e.g. close files, deallocate resources etc.)
-
- delete Towerblockformatter_;
- delete TCCblockformatter_;
- delete SRblockformatter_;
- delete Headerblockformatter_;
 
 }
 
