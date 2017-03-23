@@ -157,7 +157,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
            FEDRawData& rawdata = productRawData.get() -> FEDData(FEDid);
 	   
 	   // adding the primitive to the block
-	   TCCblockformatter_ -> DigiToRaw(trigprim, rawdata, TheMapping);
+	   TCCblockformatter_ -> DigiToRaw(trigprim, rawdata, TheMapping, bx_, lv1_);
 
      }   // end loop on ecalTrigPrim
 

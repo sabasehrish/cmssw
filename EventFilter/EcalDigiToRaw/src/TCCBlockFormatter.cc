@@ -22,14 +22,14 @@ TCCBlockFormatter::~TCCBlockFormatter() {
 }
 
 void TCCBlockFormatter::DigiToRaw(const EcalTriggerPrimitiveDigi& trigprim, 
-				  FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping)
+				  FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx, int lv1)
 {
 
   if (debug_) cout << "enter in TCCBlockFormatter::DigiToRaw " << endl;
 
   int HEADER_SIZE = 8 * 9;
-  int bx = *pbx_;
-  int lv1 = *plv1_;
+ // int bx = *pbx_;
+//  int lv1 = *plv1_;
 
 
 	const EcalTrigTowerDetId& detid = trigprim.id();
