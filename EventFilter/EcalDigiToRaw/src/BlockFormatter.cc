@@ -36,12 +36,12 @@ BlockFormatter::~BlockFormatter() {
 //}
 
 
-void BlockFormatter::DigiToRaw(FEDRawDataCollection* productRawData) {
+void BlockFormatter::DigiToRaw(FEDRawDataCollection* productRawData, int run_number, int orbit_number_, int bx, int lv1) {
 
- int run_number = *prunnumber_;
- int orbit_number_ = *porbit_number_;
- int bx = *pbx_;
- int lv1 = *plv1_;
+ //int run_number = *prunnumber_;
+ //int orbit_number_ = *porbit_number_;
+ //int bx = *pbx_;
+ //int lv1 = *plv1_;
 
  if (debug_) cout << "in BlockFormatter::DigiToRaw  run_number orbit_number bx lv1 " << dec << run_number << " " <<
          orbit_number_ << " " << bx << " " << lv1 << endl;

@@ -124,7 +124,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
   auto productRawData = std::make_unique<FEDRawDataCollection>();
 
 
-  Headerblockformatter_ -> DigiToRaw(productRawData.get());
+  Headerblockformatter_ -> DigiToRaw(productRawData.get(), runnumber_, orbit_number_, bx_, lv1_);
 
 
 // ---------   Now the Trigger Block part
