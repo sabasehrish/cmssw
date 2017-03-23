@@ -26,7 +26,7 @@ class TowerBlockFormatter : public BlockFormatter {
 	~TowerBlockFormatter();
         static const int kCardsPerTower = 5;     // Number of VFE cards per trigger tower
         void DigiToRaw(const EBDataFrame& dataframe, FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping);
-        void DigiToRaw(const EEDataFrame& dataframe, FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx_, int lv1_);
+        void DigiToRaw(const EEDataFrame& dataframe, FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx_, int lv1_) const;
 	void StartEvent();
 	void EndEvent(FEDRawDataCollection* productRawData);
 

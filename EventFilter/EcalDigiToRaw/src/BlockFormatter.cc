@@ -36,7 +36,7 @@ BlockFormatter::~BlockFormatter() {
 //}
 
 
-void BlockFormatter::DigiToRaw(FEDRawDataCollection* productRawData, int run_number, int orbit_number_, int bx, int lv1) {
+void BlockFormatter::DigiToRaw(FEDRawDataCollection* productRawData, int run_number, int orbit_number_, int bx, int lv1) const{
 
  //int run_number = *prunnumber_;
  //int orbit_number_ = *porbit_number_;
@@ -106,7 +106,7 @@ void BlockFormatter::DigiToRaw(FEDRawDataCollection* productRawData, int run_num
 
 
 
-void BlockFormatter::print(FEDRawData& rawdata) {
+void BlockFormatter::print(FEDRawData& rawdata) const {
         int size = rawdata.size();
         cout << "Print RawData  size " << dec << size << endl;
         unsigned char* pData = rawdata.data();

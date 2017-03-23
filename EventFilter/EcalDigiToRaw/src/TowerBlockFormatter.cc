@@ -397,7 +397,7 @@ void TowerBlockFormatter::StartEvent() {
 
 
 
-void TowerBlockFormatter::DigiToRaw(const EEDataFrame& dataframe, FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx, int lv1)
+void TowerBlockFormatter::DigiToRaw(const EEDataFrame& dataframe, FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx, int lv1) const
 
 	// -- now that we have the EcalElectronicsMapping, this method could probably be
 	//    merged with DigiToRaw(EBdataframe).

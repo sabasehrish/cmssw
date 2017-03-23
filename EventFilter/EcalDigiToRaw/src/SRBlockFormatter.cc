@@ -22,14 +22,14 @@ void SRBlockFormatter::StartEvent() {
   return;
 }
 
-void SRBlockFormatter::DigiToRaw(int dccid, int dcc_channel, int flag, FEDRawData& rawdata)
+void SRBlockFormatter::DigiToRaw(int dccid, int dcc_channel, int flag, FEDRawData& rawdata, int bx, int lv1)
 {
 
   if (debug_) cout << "enter in SRBlockFormatter::DigiToRaw " << endl;
   if (debug_) print(rawdata);
 
-  int bx = *pbx_;
-  int lv1 = *plv1_;
+ // int bx = *pbx_;
+ // int lv1 = *plv1_;
 
   int Nrows_SRP = 5;   // Both for Barrel and EndCap (without the header row)
   int SRid = (dccid -1) / 3 +1;

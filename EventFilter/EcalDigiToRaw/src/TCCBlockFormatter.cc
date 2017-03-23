@@ -22,7 +22,7 @@ TCCBlockFormatter::~TCCBlockFormatter() {
 }
 
 void TCCBlockFormatter::DigiToRaw(const EcalTriggerPrimitiveDigi& trigprim, 
-				  FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx, int lv1)
+				  FEDRawData& rawdata, const EcalElectronicsMapping* TheMapping, int bx, int lv1) const
 {
 
   if (debug_) cout << "enter in TCCBlockFormatter::DigiToRaw " << endl;

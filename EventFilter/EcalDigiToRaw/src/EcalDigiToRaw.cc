@@ -185,7 +185,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 		if (debug_) cout << "will process SRblockformatter_ for FEDid " << dec << FEDid << endl;
 		FEDRawData& rawdata = productRawData.get() -> FEDData(FEDid);
 		if (debug_) Headerblockformatter_ -> print(rawdata);
-		SRblockformatter_ -> DigiToRaw(Dccid,DCC_Channel,flag, rawdata);
+		SRblockformatter_ -> DigiToRaw(Dccid,DCC_Channel,flag, rawdata, bx_, lv1_);
 
            }
 	}  // end DoBarrel
@@ -206,7 +206,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
 
                 int FEDid = FEDNumbering::MINECALFEDID + Dccid;
                 FEDRawData& rawdata = productRawData.get() -> FEDData(FEDid);
-                SRblockformatter_ -> DigiToRaw(Dccid,DCC_Channel,flag, rawdata);
+                SRblockformatter_ -> DigiToRaw(Dccid,DCC_Channel,flag, rawdata, bx_, lv1_);
            }
 	}  // end doEndCap
 
