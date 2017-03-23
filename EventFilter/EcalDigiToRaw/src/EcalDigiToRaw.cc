@@ -109,7 +109,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
    Towerblockformatter_ -> StartEvent();
    SRblockformatter_ -> StartEvent();
 
-  runnumber_ = iEvent.id().run();
+   runnumber_ = iEvent.id().run();
 
   // bx_ = (counter_ % BXMAX);
   // orbit_number_ = counter_ / BXMAX;
@@ -246,7 +246,7 @@ EcalDigiToRaw::produce(edm::Event& iEvent, const edm::EventSetup& iSetup)
                 int DCCid = elid.dccId() ;   
                 int FEDid = FEDNumbering::MINECALFEDID + DCCid;
                 FEDRawData& rawdata = productRawData.get() -> FEDData(FEDid);
-                Towerblockformatter_ -> DigiToRaw(dataframe, rawdata, TheMapping);
+                Towerblockformatter_ -> DigiToRaw(dataframe, rawdata, TheMapping, bx_, lv1_-1);
         }
 	}
 
