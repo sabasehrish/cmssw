@@ -33,6 +33,8 @@ class TowerBlockFormatter : public BlockFormatter {
 	std::map<int, std::map<int,int> >* GetFEDorder() {return FEDorder; }
 
  private :
+        //make a class out of these member data, and this should be the return value of StartEvent
+        //pass that as input to the DigiToRaw and that will help us make it const
         std::map<int, std::map<int,int> >* FEDmap;
 	std::map<int, std::map<int,int> >* FEDorder;
 
